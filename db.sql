@@ -23,15 +23,17 @@ CREATE TABLE resultados (
                             resultado varchar(100)
 );
 
+
+
 -- Tabla intermedia de Estudiantes - Certificaciones
 CREATE TABLE estudiantes_cert (
+                                  id_estudiante_cert SERIAL PRIMARY KEY,
                                   id_estudiante INT NOT NULL,
                                   id_certificacion INT NOT NULL,
                                   estado_cert INT null DEFAULT 0,
                                   fecha_eval TIMESTAMP WITH TIME ZONE NULL,
                                   puntaje INT NULL,
                                   id_resultado int NULL,
-                                  PRIMARY KEY (id_estudiante, id_certificacion),
                                   FOREIGN KEY (id_estudiante) REFERENCES estudiantes(id) ON DELETE CASCADE,
                                   FOREIGN KEY (id_resultado) references resultados(id_resultado) ON DELETE CASCADE,
                                   FOREIGN KEY (id_certificacion) REFERENCES certificaciones(id) ON DELETE CASCADE
